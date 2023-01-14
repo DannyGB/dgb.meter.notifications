@@ -12,17 +12,21 @@ import (
 	"github.com/go-co-op/gocron"
 )
 
-func CreateTasks() {
-	gc := gocron.NewScheduler(time.UTC)
-
-	//gc.Every(10).Do(notificationTask) // for testing only
-	gc.Every(1).MonthLastDay().Do(notificationTask)
-	gc.StartBlocking()
+func SendTestEmail(conf configuration.Configuration) {
+	notificationTask(conf)
 }
 
-func notificationTask() {
+func CreateTasks(conf configuration.Configuration) {
+	gc := gocron.NewScheduler(time.UTC)
 
-	conf := configuration.NewConfig()
+	//gc.Every(10).Seconds().Do(notificationTask) // for testing only
+	gc.Every(1).MonthLastDay().Do(func() {
+		notificationTask(conf)
+	})
+	gc.StartAsync()
+}
+
+func notificationTask(conf configuration.Configuration) {
 
 	fmt.Println("Beginning email reminder task.")
 

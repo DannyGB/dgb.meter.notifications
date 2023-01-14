@@ -30,6 +30,9 @@ ENV METER_READINGS_WEBSITE $WEBSITE
 ARG SUBJECT="Meter Reading Due"
 ENV METER_READINGS_SUBJECT $SUBJECT
 
+ARG HTTP_PORT=80
+ENV METER_READINGS_HTTP_PORT $HTTP_PORT
+
 RUN go build -o meter.notifications .
 
 CMD [ "/app/cmd/meter.notifications/meter.notifications" ]

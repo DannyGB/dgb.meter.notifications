@@ -11,6 +11,7 @@ type Configuration struct {
 	RECIPIENTS    string
 	SUBJECT       string
 	WEBSITE       string
+	HTTP_PORT     string
 }
 
 func NewConfig() Configuration {
@@ -24,6 +25,7 @@ func NewConfig() Configuration {
 	configuration.RECIPIENTS = os.Getenv("METER_READINGS_RECIPIENTS")
 	configuration.WEBSITE = os.Getenv("METER_READINGS_WEBSITE")
 	configuration.SUBJECT = os.Getenv("METER_READINGS_SUBJECT")
+	configuration.HTTP_PORT = os.Getenv("METER_READINGS_HTTP_PORT")
 
 	return *configuration
 }
