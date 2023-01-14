@@ -30,6 +30,6 @@ ENV METER_READINGS_WEBSITE $WEBSITE
 ARG SUBJECT=Meter Reading Due
 ENV METER_READINGS_SUBJECT $SUBJECT
 
-RUN go build -o meter.readings .
+RUN go build -o meter.notifications .
 
 CMD [ "/app/cmd/meter.notifications/meter.notifications" ]
