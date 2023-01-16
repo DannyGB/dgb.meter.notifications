@@ -1,17 +1,23 @@
 package configuration
 
-import "os"
+import (
+	"os"
+	"strconv"
+)
 
 type Configuration struct {
-	SMTP_USERNAME string
-	SMTP_PASSWORD string
-	SMTP_HOST     string
-	SMTP_PORT     string
-	SMTP_FROM     string
-	RECIPIENTS    string
-	SUBJECT       string
-	WEBSITE       string
-	HTTP_PORT     string
+	SMTP_USERNAME       string
+	SMTP_PASSWORD       string
+	SMTP_HOST           string
+	SMTP_PORT           string
+	SMTP_FROM           string
+	RECIPIENTS          string
+	SUBJECT             string
+	WEBSITE             string
+	HTTP_PORT           string
+	DISABLE_EMAIL       string
+	TELEGRAM_BOT_TOKEN  string
+	TELEGRAM_CHANNEL_ID int64
 }
 
 func NewConfig() Configuration {
@@ -26,6 +32,9 @@ func NewConfig() Configuration {
 	configuration.WEBSITE = os.Getenv("METER_READINGS_WEBSITE")
 	configuration.SUBJECT = os.Getenv("METER_READINGS_SUBJECT")
 	configuration.HTTP_PORT = os.Getenv("METER_READINGS_HTTP_PORT")
+	configuration.DISABLE_EMAIL = os.Getenv("METER_READINGS_DISABLE_EMAIL")
+	configuration.TELEGRAM_BOT_TOKEN = os.Getenv("METER_READINGS_TELEGRAM_BOT_TOKEN")
+	configuration.TELEGRAM_CHANNEL_ID, _ = strconv.ParseInt(os.Getenv("METER_READINGS_TELEGRAM_CHANNEL_ID"), 10, 64)
 
 	return *configuration
 }

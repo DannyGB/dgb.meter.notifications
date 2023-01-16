@@ -6,7 +6,8 @@ import (
 	"log"
 	"net/http"
 
-	"dgb.meter.notifications/internal/configuration"
+	"dgb/meter.notifications/internal/configuration"
+
 	"github.com/gorilla/mux"
 )
 
