@@ -21,6 +21,7 @@ func CreateTasks(conf configuration.Configuration) {
 	startTelegramBot(conf, gc)
 
 	if conf.DISABLE_EMAIL == "true" {
+		gc.StartAsync()
 		return
 	}
 
@@ -59,7 +60,7 @@ func notificationTask(conf configuration.Configuration) {
 }
 
 func sendTelegramReminder(conf configuration.Configuration, bot *tgbotapi.BotAPI) {
-	msg := tgbotapi.NewMessage(conf.TELEGRAM_CHANNEL_ID, fmt.Sprintf("You should take an electric meter reading and upload it to %s\r\n or or upload via the Telegram bot @DannygbReadingsBot by typing '/add n:<reading> d:<reading>'", conf.WEBSITE))
+	msg := tgbotapi.NewMessage(conf.TELEGRAM_CHANNEL_ID, fmt.Sprintf("You should take an electric meter reading and upload it to %s\r\n or upload via the Telegram bot @DannygbReadingsBot by typing '/add n:<reading> d:<reading>'", conf.WEBSITE))
 	bot.Send(msg)
 }
 
@@ -70,6 +71,7 @@ func startTelegramBot(conf configuration.Configuration, gc *gocron.Scheduler) {
 		log.Panic(err)
 	}
 
+	//gc.Every(30).Seconds().Do(func() {
 	gc.Every(1).MonthLastDay().Do(func() {
 		sendTelegramReminder(conf, bot)
 	})
