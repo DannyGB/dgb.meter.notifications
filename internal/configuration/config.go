@@ -23,18 +23,18 @@ type Configuration struct {
 func NewConfig() Configuration {
 
 	configuration := &Configuration{}
-	configuration.SMTP_USERNAME = os.Getenv("METER_READINGS_SMTP_USERNAME")
-	configuration.SMTP_PASSWORD = os.Getenv("METER_READINGS_SMTP_PASSWORD")
-	configuration.SMTP_HOST = os.Getenv("METER_READINGS_SMTP_HOST")
-	configuration.SMTP_PORT = os.Getenv("METER_READINGS_SMTP_PORT")
-	configuration.SMTP_FROM = os.Getenv("METER_READINGS_SMTP_FROM")
-	configuration.RECIPIENTS = os.Getenv("METER_READINGS_RECIPIENTS")
-	configuration.WEBSITE = os.Getenv("METER_READINGS_WEBSITE")
-	configuration.SUBJECT = os.Getenv("METER_READINGS_SUBJECT")
-	configuration.HTTP_PORT = os.Getenv("METER_READINGS_HTTP_PORT")
-	configuration.DISABLE_EMAIL = os.Getenv("METER_READINGS_DISABLE_EMAIL")
-	configuration.TELEGRAM_BOT_TOKEN = os.Getenv("METER_READINGS_TELEGRAM_BOT_TOKEN")
-	configuration.TELEGRAM_CHANNEL_ID, _ = strconv.ParseInt(os.Getenv("METER_READINGS_TELEGRAM_CHANNEL_ID"), 10, 64)
+	configuration.SMTP_USERNAME = os.Getenv("METER_READINGS_NOTIFICATIONS_SMTP_USERNAME")
+	configuration.SMTP_PASSWORD = os.Getenv("METER_READINGS_NOTIFICATIONS_SMTP_PASSWORD")
+	configuration.SMTP_HOST = os.Getenv("METER_READINGS_NOTIFICATIONS_SMTP_HOST")
+	configuration.SMTP_PORT = os.Getenv("METER_READINGS_NOTIFICATIONS_SMTP_PORT")
+	configuration.SMTP_FROM = os.Getenv("METER_READINGS_NOTIFICATIONS_SMTP_FROM")
+	configuration.RECIPIENTS = os.Getenv("METER_READINGS_NOTIFICATIONS_RECIPIENTS")
+	configuration.WEBSITE = os.Getenv("METER_READINGS_NOTIFICATIONS_WEBSITE")
+	configuration.SUBJECT = os.Getenv("METER_READINGS_NOTIFICATIONS_SUBJECT")
+	configuration.HTTP_PORT = os.Getenv("METER_READINGS_NOTIFICATIONS_HTTP_PORT")
+	configuration.DISABLE_EMAIL = os.Getenv("METER_READINGS_NOTIFICATIONS_DISABLE_EMAIL")
+	configuration.TELEGRAM_BOT_TOKEN = os.Getenv("METER_READINGS_NOTIFICATIONS_TELEGRAM_BOT_TOKEN")
+	configuration.TELEGRAM_CHANNEL_ID, _ = strconv.ParseInt(os.Getenv("METER_READINGS_NOTIFICATIONS_TELEGRAM_CHANNEL_ID"), 10, 64)
 
 	return *configuration
 }
