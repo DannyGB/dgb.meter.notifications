@@ -17,8 +17,8 @@ func HandleRequests(conf configuration.Configuration) {
 	subRoute := myRouter.PathPrefix("/api").Subrouter()
 
 	subRoute.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(200)
 		w.Header().Add("Content-Type", "application/json")
+		w.WriteHeader(200)
 		json.NewEncoder(w).Encode("OK")
 	}).Methods(http.MethodGet)
 
